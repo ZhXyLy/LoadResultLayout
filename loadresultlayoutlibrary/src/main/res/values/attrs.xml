@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="LoadResultLayout">
+        <attr name="load_result_preview" format="enum">
+            <enum name="loading" value="0x00000000" />
+            <enum name="success" value="0x00000001" />
+            <enum name="error" value="0x00000002" />
+            <enum name="empty" value="0x00000003" />
+        </attr>
+        <attr name="load_result_loading_view" format="reference" />
+        <attr name="load_result_empty_view" format="reference" />
+        <attr name="load_result_error_view" format="reference" />
+        <attr name="load_result_reload_view_id" format="integer" />
+    </declare-styleable>
+</resources>
