@@ -1,59 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:gravity="center"
-    android:orientation="vertical">
+    android:layout_height="wrap_content">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <Button
-            android:id="@+id/btn_loading"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="loading" />
-
-        <Button
-            android:id="@+id/btn_success"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="success" />
-
-        <Button
-            android:id="@+id/btn_empty"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="empty" />
-
-        <Button
-            android:id="@+id/btn_error"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="error" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <Button
-            android:id="@+id/btn_reload"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="reload" />
-
-        <Button
-            android:id="@+id/btn_no_wifi"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="no_wifi" />
-    </LinearLayout>
-
+    <!--不设置为默认的，或者LoadResultLayoutConfig中配置的全局的-->
     <com.jx.loadresultlayout.widget.LoadResultLayout
         android:id="@+id/loadResultLayout"
         android:layout_width="match_parent"
@@ -62,7 +13,7 @@
         app:load_result_error_view="@layout/load_result_error_view"
         app:load_result_loading_view="@layout/load_result_loading_view"
         app:load_result_preview="success"
-        app:load_result_reload_view_id="@id/btn_reload">
+        app:load_result_reload_view_id="@id/btn_load_result_error_reload">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -72,8 +23,63 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="center"
+                android:background="@color/colorAccent"
                 android:text="成功页面"
                 android:textSize="30dp" />
         </LinearLayout>
     </com.jx.loadresultlayout.widget.LoadResultLayout>
-</LinearLayout>
+
+    <Button
+        android:id="@+id/btn_loading"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="loading"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintWidth_percent="0.25" />
+
+    <Button
+        android:id="@+id/btn_success"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="success"
+        app:layout_constraintStart_toEndOf="@id/btn_loading"
+        app:layout_constraintTop_toTopOf="@id/btn_loading"
+        app:layout_constraintWidth_percent="0.25" />
+
+    <Button
+        android:id="@+id/btn_empty"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="empty"
+        app:layout_constraintStart_toEndOf="@id/btn_success"
+        app:layout_constraintTop_toTopOf="@id/btn_success"
+        app:layout_constraintWidth_percent="0.25" />
+
+    <Button
+        android:id="@+id/btn_error"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="error"
+        app:layout_constraintStart_toEndOf="@id/btn_empty"
+        app:layout_constraintTop_toTopOf="@id/btn_empty"
+        app:layout_constraintWidth_percent="0.25" />
+
+    <Button
+        android:id="@+id/btn_reload"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="reload"
+        app:layout_constraintStart_toStartOf="@id/btn_loading"
+        app:layout_constraintTop_toBottomOf="@id/btn_error"
+        app:layout_constraintWidth_percent="0.25" />
+
+    <Button
+        android:id="@+id/btn_no_wifi"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="no_wifi"
+        app:layout_constraintStart_toEndOf="@id/btn_reload"
+        app:layout_constraintTop_toTopOf="@id/btn_reload"
+        app:layout_constraintWidth_percent="0.25" />
+</android.support.constraint.ConstraintLayout>

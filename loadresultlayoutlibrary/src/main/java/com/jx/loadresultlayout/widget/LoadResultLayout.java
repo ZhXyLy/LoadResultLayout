@@ -86,7 +86,7 @@ public class LoadResultLayout extends ViewGroup {
         mErrorView = inflate(context, errorViewId, null);
         int defaultReloadViewId = LoadResultLayoutConfig.getInstance().getDefaultReloadViewId();
         if (defaultReloadViewId == 0) {
-            defaultReloadViewId = R.id.btn_reload;
+            defaultReloadViewId = R.id.btn_load_result_error_reload;
         }
         int btnReloadId = a.getResourceId(R.styleable.LoadResultLayout_load_result_reload_view_id, defaultReloadViewId);
         View btnReload = mErrorView.findViewById(btnReloadId);
@@ -107,7 +107,7 @@ public class LoadResultLayout extends ViewGroup {
         mNoNetView = inflate(context, noNetViewId, null);
         int defaultNoNetReloadViewId = LoadResultLayoutConfig.getInstance().getDefaultReloadNoNetViewId();
         if (defaultNoNetReloadViewId == 0) {
-            defaultNoNetReloadViewId = R.id.btn_reload_no_wifi;
+            defaultNoNetReloadViewId = R.id.btn_load_result_no_wifi_reload;
         }
         int noNetReloadId = a.getResourceId(R.styleable.LoadResultLayout_load_result_reload_no_net_view_id, defaultNoNetReloadViewId);
         View btnNoNetReload = mNoNetView.findViewById(noNetReloadId);
