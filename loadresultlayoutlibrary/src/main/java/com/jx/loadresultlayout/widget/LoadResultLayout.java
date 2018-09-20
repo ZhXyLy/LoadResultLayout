@@ -38,11 +38,17 @@ public class LoadResultLayout extends ViewGroup {
     public static final int LOADING = 0x00000000;
     public static final int SUCCESS = 0x00000001;
     public static final int ERROR = 0x00000002;
+
+    /**
+     * 没网（为了短）
+     */
+    public static final int NO_NET = 0x00000004;
     public static final int EMPTY = 0x00000003;
 
     private View mLoadingView;
     private View mEmptyView;
     private View mErrorView;
+    private View mNoNetView;
     private View mSuccessView;
     private int mPreview;
 
@@ -86,6 +92,27 @@ public class LoadResultLayout extends ViewGroup {
         View btnReload = mErrorView.findViewById(btnReloadId);
         if (btnReload != null) {
             btnReload.setOnClickListener(new OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    reload();
+                }
+            });
+        }
+
+        int noNetLayoutId = LoadResultLayoutConfig.getInstance().getDefaultNoNetLayoutId();
+        if (noNetLayoutId == 0) {
+            noNetLayoutId = R.layout.load_result_no_net_view;
+        }
+        int noNetViewId = a.getResourceId(R.styleable.LoadResultLayout_load_result_no_net_view, noNetLayoutId);
+        mNoNetView = inflate(context, noNetViewId, null);
+        int defaultNoNetReloadViewId = LoadResultLayoutConfig.getInstance().getDefaultReloadNoNetViewId();
+        if (defaultNoNetReloadViewId == 0) {
+            defaultNoNetReloadViewId = R.id.btn_reload_no_wifi;
+        }
+        int noNetReloadId = a.getResourceId(R.styleable.LoadResultLayout_load_result_reload_no_net_view_id, defaultNoNetReloadViewId);
+        View btnNoNetReload = mNoNetView.findViewById(noNetReloadId);
+        if (btnNoNetReload != null) {
+            btnNoNetReload.setOnClickListener(new OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     reload();
@@ -137,6 +164,7 @@ public class LoadResultLayout extends ViewGroup {
             mSuccessView = getChildAt(0);
             addView(mEmptyView);
             addView(mErrorView);
+            addView(mNoNetView);
             addView(mLoadingView);
         }
 
@@ -147,6 +175,9 @@ public class LoadResultLayout extends ViewGroup {
                     break;
                 case ERROR:
                     error();
+                    break;
+                case NO_NET:
+                    noWifi();
                     break;
                 case EMPTY:
                     empty();
@@ -165,6 +196,7 @@ public class LoadResultLayout extends ViewGroup {
         mLoadingView.setVisibility(INVISIBLE);
         mSuccessView.setVisibility(INVISIBLE);
         mErrorView.setVisibility(INVISIBLE);
+        mNoNetView.setVisibility(INVISIBLE);
         mEmptyView.setVisibility(INVISIBLE);
     }
 
@@ -181,6 +213,11 @@ public class LoadResultLayout extends ViewGroup {
     public void error() {
         resetView();
         mErrorView.setVisibility(VISIBLE);
+    }
+
+    public void noWifi() {
+        resetView();
+        mNoNetView.setVisibility(VISIBLE);
     }
 
     public void loading() {

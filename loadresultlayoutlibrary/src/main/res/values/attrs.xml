@@ -7,10 +7,13 @@
             <enum name="success" value="0x00000001" />
             <enum name="error" value="0x00000002" />
             <enum name="empty" value="0x00000003" />
+            <enum name="no_net" value="0x00000004" />
         </attr>
         <attr name="load_result_loading_view" format="reference" />
         <attr name="load_result_empty_view" format="reference" />
         <attr name="load_result_error_view" format="reference" />
+        <attr name="load_result_no_net_view" format="reference" />
         <attr name="load_result_reload_view_id" format="integer" />
+        <attr name="load_result_reload_no_net_view_id" format="integer" />
     </declare-styleable>
 </resources>

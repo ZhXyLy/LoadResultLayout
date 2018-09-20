@@ -12,7 +12,10 @@ public class LoadResultLayoutConfig {
     private int defaultLoadingLayoutId;
     private int defaultEmptyLayoutId;
     private int defaultErrorLayoutId;
+    private int defaultNoNetLayoutId;
+
     private int defaultReloadViewId;
+    private int defaultReloadNoWifiViewId;
 
     private static LoadResultLayoutConfig INSTANCE;
 
@@ -59,6 +62,17 @@ public class LoadResultLayoutConfig {
         defaultReloadViewId = reloadViewId;
     }
 
+    /**
+     * 设置默认的断网页面
+     *
+     * @param layoutId     布局ID
+     * @param reloadViewId 重新加载按钮ID
+     */
+    public void setDefaultNoNetLayout(int layoutId, int reloadViewId) {
+        defaultNoNetLayoutId = layoutId;
+        defaultReloadNoWifiViewId = reloadViewId;
+    }
+
     int getDefaultLoadingLayoutId() {
         return defaultLoadingLayoutId;
     }
@@ -71,7 +85,15 @@ public class LoadResultLayoutConfig {
         return defaultErrorLayoutId;
     }
 
+    int getDefaultNoNetLayoutId() {
+        return defaultNoNetLayoutId;
+    }
+
     int getDefaultReloadViewId() {
         return defaultReloadViewId;
+    }
+
+    int getDefaultReloadNoNetViewId() {
+        return defaultReloadNoWifiViewId;
     }
 }

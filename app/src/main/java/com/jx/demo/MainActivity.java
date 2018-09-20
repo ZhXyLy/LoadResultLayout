@@ -59,5 +59,12 @@ public class MainActivity extends AppCompatActivity {
                 loadResultLayout.reload();
             }
         });
+
+        findViewById(R.id.btn_no_wifi).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                loadResultLayout.noWifi();
+            }
+        });
     }
 }

@@ -11,14 +11,14 @@
         android:layout_width="72dp"
         android:layout_height="72dp"
         android:layout_marginBottom="8dp"
-        app:layout_constraintBottom_toTopOf="@+id/btn_reload"
+        app:layout_constraintBottom_toTopOf="@+id/btn_reload_no_wifi"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        android:src="@drawable/sad_cloud" />
+        android:src="@drawable/wifi_close" />
 
     <Button
-        android:id="@+id/btn_reload"
+        android:id="@+id/btn_reload_no_wifi"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="24dp"
